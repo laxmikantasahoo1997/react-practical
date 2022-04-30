@@ -2,7 +2,7 @@
 import TodoContainer from "./TodoContainer";
 import TodoList from "./TodoList";
 import React,{useState,useEffect} from 'react';
-import { getUsers, deleteUser,editUser } from '../Service/api';
+import { getUsers, deleteUser } from '../Service/api';
 
 function Home() {
   const [users, setUsers] = useState([]);
@@ -21,10 +21,7 @@ function Home() {
       let response = await getUsers();
       setUsers(response.data);
   }
-  const editUserdetails = async (id) =>{
-       editUser(id);
-      getAllUsers();
-  }
+ 
 
 
   return (
@@ -34,7 +31,7 @@ function Home() {
      <div className="bg-white rounded rounded-3 p-5 w-75">
      <h1 style={{marginRight:'80%'}}>Todo List</h1>
       <TodoContainer getAllUsers={getAllUsers}/>
-      <TodoList users={users} deleteUserData={deleteUserData} getAllUsers={getAllUsers} editUserdetails={editUserdetails}/>
+      <TodoList users={users} deleteUserData={deleteUserData} getAllUsers={getAllUsers} />
      </div>
     </div>
 </div>
